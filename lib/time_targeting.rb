@@ -9,10 +9,10 @@ contents.each do |row|
   times = DateTime.strptime(date_and_time, '%m/%d/%Y %H:%M').to_time.utc
   hours = times.hour
   total_hours << hours.to_s.rjust(2,'0')
-
 end
 
 paired = {}
+
 total_hours.each do |a|
   if paired[a].nil?
     paired[a] = 1
@@ -20,8 +20,11 @@ total_hours.each do |a|
     paired[a] += 1
   end
 end
+
 array = []
+
 paired.map do |hour,occurances|
   array << ["#{hour}:00 - #{occurances}"]
 end
+
 puts array.sort
